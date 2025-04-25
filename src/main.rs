@@ -236,7 +236,7 @@ async fn main() -> anyhow::Result<()> {
                                 .try_into()
                                 .context("failed to parse created_at")?;
 
-                            // 简化处理，直接打印原始消息
+                            // 直接打印原始消息
                             info!("Received update: {:?}", msg);
                         }
                         Err(error) => {
