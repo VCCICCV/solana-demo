@@ -427,14 +427,40 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "edca88bc138befd0323b20752846e6587272d3b03b0343c8ea28a6f819e6e71f"
 dependencies = [
  "async-trait",
- "axum-core",
+ "axum-core 0.4.5",
  "bytes",
  "futures-util",
  "http",
  "http-body",
  "http-body-util",
  "itoa",
- "matchit",
+ "matchit 0.7.3",
+ "memchr",
+ "mime",
+ "percent-encoding",
+ "pin-project-lite",
+ "rustversion",
+ "serde",
+ "sync_wrapper",
+ "tower 0.5.2",
+ "tower-layer",
+ "tower-service",
+]
+
+[[package]]
+name = "axum"
+version = "0.8.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "de45108900e1f9b9242f7f2e254aa3e2c029c921c258fe9e6b4217eeebd54288"
+dependencies = [
+ "axum-core 0.5.2",
+ "bytes",
+ "futures-util",
+ "http",
+ "http-body",
+ "http-body-util",
+ "itoa",
+ "matchit 0.8.4",
  "memchr",
  "mime",
  "percent-encoding",
@@ -468,14 +494,36 @@ dependencies = [
 ]
 
 [[package]]
+name = "axum-core"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "68464cd0412f486726fb3373129ef5d2993f90c34bc2bc1c1e9943b2f4fc7ca6"
+dependencies = [
+ "bytes",
+ "futures-core",
+ "http",
+ "http-body",
+ "http-body-util",
+ "mime",
+ "pin-project-lite",
+ "rustversion",
+ "sync_wrapper",
+ "tower-layer",
+ "tower-service",
+]
+
+[[package]]
 name = "backoff"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b62ddb9cb1ec0a098ad4bbf9344d0713fa193ae1a80af55febcff2627b6a00c1"
 dependencies = [
+ "futures-core",
  "getrandom 0.2.16",
  "instant",
+ "pin-project-lite",
  "rand 0.8.5",
+ "tokio",
 ]
 
 [[package]]
@@ -1819,6 +1867,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0e7465ac9959cc2b1404e8e2367b43684a6d13790fe23056cc8c6c5a6b7bcb94"
 
 [[package]]
+name = "matchit"
+version = "0.8.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "47e1ffaa40ddd1f3ed91f717a33c8c0ee23fff369e3aa8772b9605cc1d22f4c3"
+
+[[package]]
 name = "memchr"
 version = "2.7.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2822,7 +2876,7 @@ dependencies = [
  "solana-slot-hashes",
  "solana-slot-history",
  "solana-sysvar",
- "spl-token 7.0.0",
+ "spl-token",
  "spl-token-2022 7.0.0",
  "spl-token-group-interface",
  "spl-token-metadata-interface",
@@ -3109,8 +3163,8 @@ dependencies = [
  "serde_json",
  "solana-sdk",
  "solana-transaction-status",
- "spl-token 8.0.0",
  "tokio",
+ "tonic 0.13.0",
  "yellowstone-grpc-client",
  "yellowstone-grpc-proto",
 ]
@@ -4421,7 +4475,7 @@ dependencies = [
  "solana-transaction-status-client-types",
  "spl-associated-token-account",
  "spl-memo",
- "spl-token 7.0.0",
+ "spl-token",
  "spl-token-2022 7.0.0",
  "spl-token-group-interface",
  "spl-token-metadata-interface",
@@ -4539,7 +4593,7 @@ dependencies = [
  "num-traits",
  "solana-program",
  "spl-associated-token-account-client",
- "spl-token 7.0.0",
+ "spl-token",
  "spl-token-2022 6.0.0",
  "thiserror 1.0.69",
 ]
@@ -4700,34 +4754,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "spl-token"
-version = "8.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "053067c6a82c705004f91dae058b11b4780407e9ccd6799dc9e7d0fab5f242da"
-dependencies = [
- "arrayref",
- "bytemuck",
- "num-derive",
- "num-traits",
- "num_enum",
- "solana-account-info",
- "solana-cpi",
- "solana-decode-error",
- "solana-instruction",
- "solana-msg",
- "solana-program-entrypoint",
- "solana-program-error",
- "solana-program-memory",
- "solana-program-option",
- "solana-program-pack",
- "solana-pubkey",
- "solana-rent",
- "solana-sdk-ids",
- "solana-sysvar",
- "thiserror 2.0.12",
-]
-
-[[package]]
 name = "spl-token-2022"
 version = "6.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4744,7 +4770,7 @@ dependencies = [
  "spl-elgamal-registry",
  "spl-memo",
  "spl-pod",
- "spl-token 7.0.0",
+ "spl-token",
  "spl-token-confidential-transfer-ciphertext-arithmetic",
  "spl-token-confidential-transfer-proof-extraction",
  "spl-token-confidential-transfer-proof-generation 0.2.0",
@@ -4772,7 +4798,7 @@ dependencies = [
  "spl-elgamal-registry",
  "spl-memo",
  "spl-pod",
- "spl-token 7.0.0",
+ "spl-token",
  "spl-token-confidential-transfer-ciphertext-arithmetic",
  "spl-token-confidential-transfer-proof-extraction",
  "spl-token-confidential-transfer-proof-generation 0.3.0",
@@ -5128,7 +5154,7 @@ checksum = "877c5b330756d856ffcc4553ab34a5684481ade925ecc54bcd1bf02b1d0d4d52"
 dependencies = [
  "async-stream",
  "async-trait",
- "axum",
+ "axum 0.7.9",
  "base64 0.22.1",
  "bytes",
  "flate2",
@@ -5156,6 +5182,35 @@ dependencies = [
 ]
 
 [[package]]
+name = "tonic"
+version = "0.13.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "85839f0b32fd242bb3209262371d07feda6d780d16ee9d2bc88581b89da1549b"
+dependencies = [
+ "async-trait",
+ "axum 0.8.3",
+ "base64 0.22.1",
+ "bytes",
+ "h2",
+ "http",
+ "http-body",
+ "http-body-util",
+ "hyper",
+ "hyper-timeout",
+ "hyper-util",
+ "percent-encoding",
+ "pin-project",
+ "prost",
+ "socket2",
+ "tokio",
+ "tokio-stream",
+ "tower 0.5.2",
+ "tower-layer",
+ "tower-service",
+ "tracing",
+]
+
+[[package]]
 name = "tonic-build"
 version = "0.12.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5179,7 +5234,7 @@ dependencies = [
  "prost",
  "tokio",
  "tokio-stream",
- "tonic",
+ "tonic 0.12.3",
 ]
 
 [[package]]
@@ -5210,10 +5265,15 @@ checksum = "d039ad9159c98b70ecfd540b2573b97f7f52c3e8d9f8ad57a24b916a536975f9"
 dependencies = [
  "futures-core",
  "futures-util",
+ "indexmap 2.9.0",
  "pin-project-lite",
+ "slab",
  "sync_wrapper",
+ "tokio",
+ "tokio-util",
  "tower-layer",
  "tower-service",
+ "tracing",
 ]
 
 [[package]]
@@ -5661,7 +5721,7 @@ dependencies = [
  "bytes",
  "futures",
  "thiserror 1.0.69",
- "tonic",
+ "tonic 0.12.3",
  "tonic-health",
  "yellowstone-grpc-proto",
 ]
@@ -5688,7 +5748,7 @@ dependencies = [
  "solana-transaction-status",
  "spl-token-2022 6.0.0",
  "thiserror 1.0.69",
- "tonic",
+ "tonic 0.12.3",
  "tonic-build",
 ]
 
